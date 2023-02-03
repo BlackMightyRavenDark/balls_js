@@ -7,6 +7,7 @@ const canvasHeight = 500;
 const cubeSize = 50;
 
 let balls = [];
+let colors = [];
 
 function init() {
     const canvas = document.getElementById("canvas");
@@ -41,7 +42,6 @@ function randomRange(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-const deviceContext = init();
 function setBalls(count) {
     for (let i = 0; i < count; ++i) {
         let xPos = randomRange(0, canvasWidth);
@@ -53,11 +53,24 @@ function setBalls(count) {
             yDir = randomRange(-5, 5);
         } while (xDir < 0.1 && yDir < 0.1);
 
-        let ball = new Ball(xPos, yPos, 10, "#ffff00");
+        let colorId = Math.round(randomRange(0, colors.length - 1));
+
+        let ball = new Ball(xPos, yPos, 10, colors[colorId]);
         ball.setDirection(xDir, yDir);
         balls.push(ball);
     }
 }
+
+const deviceContext = init();
+
+colors.push("#000000");
+colors.push("#ff0000");
+colors.push("#00ff00");
+colors.push("#0000ff");
+colors.push("#00ffff");
+colors.push("#ff00ff");
+colors.push("#ffff00");
+colors.push("#ffffff");
 
 setBalls(10);
 
