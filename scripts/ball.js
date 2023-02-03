@@ -8,11 +8,17 @@ export class Ball {
         this.color = color;
     }
 
-    draw(deviceContext) {
-        deviceContext.strokeStyle = this.color;
+    draw(deviceContext, fill) {
         deviceContext.beginPath();
         deviceContext.arc(this.x, this.y, this.radius, 0, 6.28, false);
-        deviceContext.stroke();
+        if (fill)
+        {
+            deviceContext.fillStyle = this.color;
+            deviceContext.fill();
+        } else {
+            deviceContext.strokeStyle = this.color;
+            deviceContext.stroke();
+        }
     }
 
     setDirection(dirX, dirY) {

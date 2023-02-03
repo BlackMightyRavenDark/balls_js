@@ -80,6 +80,6 @@ setInterval(function () {
     {
         balls[i].move();
         balls[i].bounds(0, 0, canvasWidth, canvasHeight);
-        balls[i].draw(deviceContext);
+        balls[i].draw(deviceContext, true);
     }
 }, 50);
