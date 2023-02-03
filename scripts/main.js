@@ -6,7 +6,7 @@ const canvasHeight = 500;
 
 const cubeSize = 50;
 
-let ball = new Ball(60, 60, 10, "#ffff00");
+let balls = [];
 
 function init() {
     const canvas = document.getElementById("canvas");
@@ -42,19 +42,31 @@ function randomRange(min, max) {
 }
 
 const deviceContext = init();
+function setBalls(count) {
+    for (let i = 0; i < count; ++i) {
+        let xPos = randomRange(0, canvasWidth);
+        let yPos = randomRange(0, canvasHeight);
+        let xDir;
+        let yDir;
+        do {
+            xDir = randomRange(-5, 5);
+            yDir = randomRange(-5, 5);
+        } while (xDir < 0.1 && yDir < 0.1);
 
-let randomX;
-let randomY;
-do {
-    randomX = randomRange(-5, 5);
-    randomY = randomRange(-5, 5);
-} while (randomX < 0.1 && randomY < 0.1);
+        let ball = new Ball(xPos, yPos, 10, "#ffff00");
+        ball.setDirection(xDir, yDir);
+        balls.push(ball);
+    }
+}
 
-ball.setDirection(randomX, randomY);
+setBalls(10);
 
 setInterval(function () {
     clearCanvas(deviceContext);
-    ball.move();
-    ball.bounds(0, 0, canvasWidth, canvasHeight);
-    ball.draw(deviceContext);
+    for (let i = 0; i < balls.length; ++i)
+    {
+        balls[i].move();
+        balls[i].bounds(0, 0, canvasWidth, canvasHeight);
+        balls[i].draw(deviceContext);
+    }
 }, 50);
