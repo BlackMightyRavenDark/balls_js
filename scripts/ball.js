@@ -1,14 +1,15 @@
 "use strict";
 
 export class Ball {
-    constructor(x, y, radius) {
+    constructor(x, y, radius, color) {
         this.x = x;
         this.y = y;
         this.radius = radius;
+        this.color = color;
     }
 
     draw(deviceContext) {
-        deviceContext.strokeStyle = "#00ffff";
+        deviceContext.strokeStyle = this.color;
         deviceContext.beginPath();
         deviceContext.arc(this.x, this.y, this.radius, 0, 6.28, false);
         deviceContext.stroke();

@@ -6,7 +6,7 @@ const canvasHeight = 500;
 
 const cubeSize = 50;
 
-let ball = new Ball(60, 60, 10);
+let ball = new Ball(60, 60, 10, "#ffff00");
 
 function init() {
     const canvas = document.getElementById("canvas");
