@@ -37,9 +37,20 @@ function clearCanvas(dc) {
     }
 }
 
+function randomRange(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 const deviceContext = init();
 
-ball.setDirection(5, 5);
+let randomX;
+let randomY;
+do {
+    randomX = randomRange(-5, 5);
+    randomY = randomRange(-5, 5);
+} while (randomX < 0.1 && randomY < 0.1);
+
+ball.setDirection(randomX, randomY);
 
 setInterval(function () {
     clearCanvas(deviceContext);
