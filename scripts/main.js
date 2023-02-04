@@ -60,6 +60,9 @@ function setBalls(count) {
         let ball = rainbow ? new BallRainbow(xPos, yPos, 10, null, 4) : new Ball(xPos, yPos, 10, colors[colorId]);
         ball.setDirection(xDir, yDir);
 
+        let rotation = randomRange(-0.25, 0.25);
+        ball.setRotattionSpeed(rotation);
+
         balls.push(ball);
     }
 }
@@ -83,6 +86,7 @@ setInterval(function () {
     {
         balls[i].move();
         balls[i].bounds(0, 0, canvasWidth, canvasHeight);
+        balls[i].rotate();
         balls[i].draw(deviceContext, true);
     }
 }, 50);

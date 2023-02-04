@@ -5,6 +5,8 @@ export class Ball {
         this.x = x;
         this.y = y;
         this.radius = radius;
+        this.rotationAngle = 0;
+        this.rotationSpeed = 0;
         this.color = color;
     }
 
@@ -26,9 +28,25 @@ export class Ball {
         this.dirY = dirY;
     }
 
+    setRotattionSpeed(speed) {
+        this.rotationSpeed = speed;
+    }
+
     move() {
         this.x += this.dirX;
         this.y += this.dirY;
+    }
+
+    rotate() {
+        if (Math.abs(this.rotationSpeed) > 0.001)
+        {
+            this.rotationAngle += this.rotationSpeed;
+            if (this.rotationAngle >= 360) {
+                this.rotationAngle -= 360;
+            } else if (this.rotationAngle < 0) {
+                this.rotationAngle += 360;
+            }
+        }
     }
 
     bounds(minX, minY, maxX, maxY) {

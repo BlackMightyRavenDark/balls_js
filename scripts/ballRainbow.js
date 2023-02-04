@@ -17,14 +17,13 @@ export class BallRainbow extends Ball {
     draw(deviceContext, fill) {
         const TWO_PI = 6.28;
         const step = TWO_PI / this.count;
-        let i = 0;
-        for (let a = 0; a < TWO_PI; a += step) {
+        let angle = this.rotationAngle;
+        for (let i = 0; i < this.count; ++i) {
             deviceContext.beginPath();
             deviceContext.moveTo(this.x, this.y);
-            deviceContext.arc(this.x, this.y, 10, a, a + step, false);
+            deviceContext.arc(this.x, this.y, this.radius, angle, angle++ + step, false);
             deviceContext.fillStyle = this.ballColors[i];
             deviceContext.fill();
-            ++i;
         }
     }
 
