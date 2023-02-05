@@ -53,13 +53,13 @@ function setBalls(count) {
             yDir = randomRange(-5, 5);
         } while (xDir < 0.1 && yDir < 0.1);
 
-        let radius = Math.round(randomRange(5, 20));
+        let radius = Math.round(randomRange(5, 30));
         let colorId = Math.round(randomRange(0, colors.length - 1));
 
         let multiColored = randomRange(0, 100) < 50;
         let ball;
         if (multiColored) {
-            const colorCount = 4;
+            const colorCount = colors.length;
             let ballColors = [];
             for (let i = 0; i < colorCount; ++i) {
                 const cororId = Math.floor(Math.random() * (colors.length - 1));
@@ -90,7 +90,7 @@ colors.push("#ff00ff");
 colors.push("#ffff00");
 colors.push("#ffffff");
 
-setBalls(10);
+setBalls(30);
 
 setInterval(function () {
     clearCanvas(deviceContext);
