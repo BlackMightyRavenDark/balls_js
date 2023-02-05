@@ -1,8 +1,8 @@
 "use strict";
 import { Ball } from "./ball.js";
 
-const canvasWidth = 700;
-const canvasHeight = 500;
+const canvasWidth = window.innerWidth;
+const canvasHeight = window.innerHeight;
 
 const cubeSize = 50;
 
