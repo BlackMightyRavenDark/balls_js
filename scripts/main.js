@@ -1,6 +1,5 @@
 "use strict";
 import { Ball } from "./ball.js";
-import { BallRainbow } from "./ballRainbow.js";
 
 const canvasWidth = 700;
 const canvasHeight = 500;
@@ -8,7 +7,7 @@ const canvasHeight = 500;
 const cubeSize = 50;
 
 let balls = [];
-export let colors = [];
+let colors = [];
 
 function init() {
     const canvas = document.getElementById("canvas");
@@ -56,8 +55,20 @@ function setBalls(count) {
 
         let colorId = Math.round(randomRange(0, colors.length - 1));
 
-        let rainbow = randomRange(0, 10) < 5;
-        let ball = rainbow ? new BallRainbow(xPos, yPos, 10, null, 4) : new Ball(xPos, yPos, 10, colors[colorId]);
+        let multiColored = randomRange(0, 100) < 50;
+        let ball;
+        if (multiColored) {
+            const colorCount = 4;
+            let ballColors = [];
+            for (let i = 0; i < colorCount; ++i) {
+                const cororId = Math.floor(Math.random() * (colors.length - 1));
+                ballColors.push(colors[cororId]);
+            }
+            ball = new Ball(xPos, yPos, 10, ballColors);
+        } else {
+            ball = new Ball(xPos, yPos, 10, [colors[colorId]]);
+        }
+
         ball.setDirection(xDir, yDir);
 
         let rotation = randomRange(-0.25, 0.25);
