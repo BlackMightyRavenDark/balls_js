@@ -53,6 +53,7 @@ function setBalls(count) {
             yDir = randomRange(-5, 5);
         } while (xDir < 0.1 && yDir < 0.1);
 
+        let radius = Math.round(randomRange(5, 20));
         let colorId = Math.round(randomRange(0, colors.length - 1));
 
         let multiColored = randomRange(0, 100) < 50;
@@ -64,9 +65,9 @@ function setBalls(count) {
                 const cororId = Math.floor(Math.random() * (colors.length - 1));
                 ballColors.push(colors[cororId]);
             }
-            ball = new Ball(xPos, yPos, 10, ballColors);
+            ball = new Ball(xPos, yPos, radius, ballColors);
         } else {
-            ball = new Ball(xPos, yPos, 10, [colors[colorId]]);
+            ball = new Ball(xPos, yPos, radius, [colors[colorId]]);
         }
 
         ball.setDirection(xDir, yDir);
