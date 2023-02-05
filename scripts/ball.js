@@ -63,19 +63,19 @@ export class Ball {
     }
 
     bounds(minX, minY, maxX, maxY) {
-        if (this.x < minX) {
-            this.x = minX;
+        if (this.x < minX + this.radius) {
+            this.x = minX + this.radius;
             this.dirX *= -1;
-        } else if (this.x > maxX) {
-            this.x = maxX;
+        } else if (this.x > maxX - this.radius) {
+            this.x = maxX - this.radius;
             this.dirX *= -1;
         }
 
-        if (this.y < minY) {
-            this.y = minY;
+        if (this.y < minY + this.radius) {
+            this.y = minY + this.radius;
             this.dirY *= -1;
-        } else if (this.y > maxY) {
-            this.y = maxY;
+        } else if (this.y > maxY - this.radius) {
+            this.y = maxY - this.radius;
             this.dirY *= -1;
         }
     }
